@@ -7,7 +7,7 @@ from apiclient import discovery
 from oauth2client import client
 from oauth2client import tools
 from oauth2client.file import Storage
-from random import *
+import random as rand
 
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly'
 CLIENT_SECRET_FILE = 'client_secret.json'
@@ -61,7 +61,7 @@ def main():
             if not len(row): #we have reached the end of the candiate data
                 break
             if int(row[0]) == 20:
-                x = randint(0,1)
+                x = rand.randint(0,1)
                 if x == 0:
                     print(row[1])
                     total-=1
@@ -81,10 +81,10 @@ def main():
         for lucky_winner in second_prob:
             print(lucky_winner)
         print("\nWeight List:")
-        shuffle(priority_weightlist)
+        rand.shuffle(priority_weightlist)
         for priority_weightlisted in priority_weightlist:
             print(priority_weightlisted)
-        shuffle(normal_canidate)
+        rand.shuffle(normal_canidate)
         normal_canidate = [person for person in normal_canidate if person not in lucky_winner]
         for weight_listed in normal_canidate:
             print(weight_listed)
